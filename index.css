@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-habibi-black: #0a0506;
+  --color-habibi-black-soft: #14090a;
+  --color-habibi-card: #1a0d0e;
+  --color-habibi-red: #c0392b;
+  --color-habibi-red-bright: #e23b2b;
+  --color-habibi-red-deep: #8e2418;
+  --color-habibi-gold: #d4a64a;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background-color: #0a0506;
+  color: #f5f0ea;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgba(192, 57, 43, 0.32);
+  color: #f5f0ea;
+}
+
+:focus-visible {
+  outline: 2px solid #c0392b;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.font-display {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.02em;
+  font-feature-settings: 'liga' 1;
+}
+
+.font-serif-elegant {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  max-width: 120px;
+  background: linear-gradient(90deg, transparent, #c0392b, transparent);
+  opacity: 0.7;
+}
+
+.corner-ornament {
+  position: relative;
+}
+
+.corner-ornament::before,
+.corner-ornament::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: #c0392b;
+  pointer-events: none;
+  opacity: 0.55;
+  transition: opacity 0.4s ease;
+}
+
+.corner-ornament:hover::before,
+.corner-ornament:hover::after {
+  opacity: 0.9;
+}
+
+.corner-ornament::before {
+  top: 8px;
+  left: 8px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.corner-ornament::after {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.is-visible {
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.slow-zoom {
+  animation: slowZoom 18s ease-in-out infinite alternate;
+}
+
+@keyframes redGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(226, 59, 43, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(226, 59, 43, 0);
+  }
+}
+
+.red-glow {
+  animation: redGlow 2.6s ease-in-out infinite;
+}
+
+@keyframes openingTicker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+.opening-ticker {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.opening-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: openingTicker 28s linear infinite;
+}
+
+.opening-ticker-track span {
+  padding: 0.65rem 4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opening-ticker-track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .opening-ticker-track span:not(:first-child) {
+    display: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0506;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a1a17;
+  border-radius: 6px;
+  border: 2px solid #0a0506;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c0392b;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.text-gradient-red {
+  background: linear-gradient(135deg, #e23b2b 0%, #c0392b 50%, #8e2418 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
